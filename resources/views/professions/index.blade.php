@@ -47,6 +47,7 @@
            @endforeach
            </tbody>
        </table>
+       {{$professions->links()}}
    @else
        No hay profesiones
    @endif
