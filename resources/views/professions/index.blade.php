@@ -12,6 +12,9 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Título</th>
+            <th scope="col">Nivel de educación</th>
+            <th scope="col">Salario</th>
+            <th scope="col">Experiencia requerida</th>
             <th scope="col">Perfiles</th>
             <th scope="col">Acciones</th>
         </tr>
@@ -20,7 +23,13 @@
         @foreach($professions as $profession)
             <tr>
                 <td scope="row">{{ $profession->id }}</td>
-                <td>{{ $profession->title }}</td>
+                <td>
+                    {{ $profession->title }}
+                    <span class="note">{{ $profession->sector }}</span>
+                </td>
+                <td>{{$profession->education_level}}</td>
+                <td>{{$profession->salary}}</td>
+                <td>{{$profession->experience_required}}</td>
                 <td>{{ $profession->profiles_count }}</td>
                 <td>
                     @if($profession->profiles_count == 0)
