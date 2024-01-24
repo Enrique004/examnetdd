@@ -3,15 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Profession;
+use App\Skill;
 
 class ProfessionController extends Controller
 {
     public function index()
     {
-        $professions = Profession::withCount('profiles')->orderBy('title')->paginate(10);
-        return view('professions.index', [
-            'professions' => $professions,
-        ]);
+        $professions = Profession::query()
+            ->withCount('profiles')
+            ->applyFilters()
+            ->orderBy('title')
+            ->paginate(10);
+
+        return view('professions.index')
+            ->with([
+                'professions' => $professions,
+                'skills' => Skill::orderBy('name')->get(),
+                'checkedSkills' => collect(request('skills')),
+            ]);
     }
 
     public function destroy(Profession $profession)

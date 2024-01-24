@@ -7,6 +7,8 @@
         <h1 class="pb-1">Listado de profesiones</h1>
     </div>
 
+    @include('professions._filters')
+
    @if($professions->isNotEmpty())
        <table class="table">
            <thead class="thead-dark">

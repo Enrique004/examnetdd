@@ -8,6 +8,11 @@ class Profession extends Model
 {
     protected $fillable = ['title'];
 
+    public function newEloquentBuilder($query)
+    {
+        return new ProfessionQuery($query);
+    }
+
     public function profiles()
     {
         return $this->hasMany(UserProfile::class);
