@@ -24,7 +24,8 @@ class CreateSkillProfessionTable extends Migration
             $table->unsignedBigInteger('skill_id');
             $table->foreign('skill_id')
                 ->references('id')
-                ->on('skills');
+                ->on('skills')
+                ->onDelete('cascade');
 
             $table->timestamps();
             $table->softDeletes();
